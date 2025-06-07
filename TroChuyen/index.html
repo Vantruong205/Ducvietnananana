@@ -42,3 +42,28 @@
       position: relative;
       overflow: hidden;
     }
+    
+    .emotion-ball::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.3), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .emotion-ball:hover::before {
+      opacity: 1;
+    }
+
+    .emotion-ball:hover {
+      transform: translateY(-8px) scale(1.05);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .emotion-ball:active {
+      transform: scale(0.9);
+    }

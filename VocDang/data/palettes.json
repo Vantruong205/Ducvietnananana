@@ -1,0 +1,13 @@
+{
+  "Spring": {
+    "title": "Mùa Xuân - Tông Ấm Sáng",
+    "description": "Bạn thuộc nhóm Mùa Xuân với tông da ấm và sáng. Màu sắc phù hợp với bạn là những tông ấm, tươi sáng như san hô, vàng mật ong, xanh lá tươi và beige ấm. Đây là tông màu lý tưởng cho phong cách trẻ trung, năng động.",
+    "undertone": "Ấm (Warm)",
+    "brightness": "Sáng (Light)",
+    "colors": [
+      {"hex": "#FF6F61", "name": "San hô ấm"},
+      {"hex": "#FFD166", "name": "Vàng mật ong"},
+      {"hex": "#06D6A0", "name": "Xanh lá tươi"},
+      {"hex": "#118AB2", "name": "Xanh biển sáng"},
+      {"hex": "#EF476F", "name": "Hồng đào"}
+    ],

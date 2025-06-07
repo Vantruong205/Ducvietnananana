@@ -67,3 +67,37 @@
     "best_for": ["Da sáng lạnh", "Người có tông da hồng", "Tóc đen tự nhiên"],
     "avoid_colors": ["Cam cháy", "Vàng đậm", "Nâu đỏ"]
   },
+  "Autumn": {
+    "title": "Mùa Thu - Tông Ấm Trầm",
+    "description": "Bạn thuộc nhóm Mùa Thu với tông da ấm và trầm. Màu sắc phù hợp với bạn là những tông đất ấm như rượu vang, rêu xanh, vàng mù tạt và nâu sô cô la. Phong cách cổ điển, quý phái sẽ làm nổi bật vẻ đẹp của bạn.",
+    "undertone": "Ấm (Warm)",
+    "brightness": "Trung bình đến ngăm",
+    "colors": [
+      {"hex": "#8B4513", "name": "Nâu đất"},
+      {"hex": "#DAA520", "name": "Vàng mù tạt"},
+      {"hex": "#228B22", "name": "Xanh rêu"},
+      {"hex": "#A0522D", "name": "Nâu sô cô la"},
+      {"hex": "#6B4423", "name": "Nâu đồng"}
+    ],
+    "style_suggestions": [
+      "Áo len nâu đất hoặc rượu vang",
+      "Khăn quàng màu rêu xanh hoặc vàng mù tạt",
+      "Quần tây màu beige đậm",
+      "Bốt da nâu đậm",
+      "Áo khoác màu cam cháy hoặc đỏ gạch"
+    ],
+    "lip_colors": [
+      {"name": "Đỏ gạch ấm", "brands": ["MAC", "3CE", "Maybelline"]},
+      {"name": "Cam cháy đậm", "brands": ["Fenty", "Rom&nd", "Merzy"]},
+      {"name": "Nâu đất ấm áp", "brands": ["NYX", "Kiko", "L'Oréal"]},
+      {"name": "Nude với ánh đào", "brands": ["Chanel", "Dior", "YSL"]}
+    ],
+    "hair_colors": [
+      {"name": "Nâu đỏ ánh đồng", "code": "5.4"},
+      {"name": "Nâu hạt dẻ ấm", "code": "6.4"},
+      {"name": "Đồng ánh đỏ", "code": "4.5"},
+      {"name": "Ombre nâu đậm", "code": "4/6"}
+    ],
+    "best_for": ["Da ngăm ấm", "Người có tông da vàng đậm", "Tóc nâu đậm tự nhiên"],
+    "avoid_colors": ["Xanh neon", "Hồng phấn", "Tím pastel"]
+  },

@@ -33,3 +33,37 @@
     "best_for": ["Da sáng ấm", "Người có tông da vàng ấm", "Tóc nâu tự nhiên"],
     "avoid_colors": ["Xanh lạnh", "Tím xám", "Đen tuyền"]
   },
+    "Summer": {
+    "title": "Mùa Hè - Tông Lạnh Dịu",
+    "description": "Bạn thuộc nhóm Mùa Hè với tông da lạnh và dịu. Màu sắc phù hợp với bạn là những tông lạnh, nhẹ nhàng như xanh pastel, hồng phấn, tím oải hương và xám xanh. Phong cách thanh lịch, nhẹ nhàng sẽ tôn lên vẻ đẹp của bạn.",
+    "undertone": "Lạnh (Cool)",
+    "brightness": "Sáng đến trung bình",
+    "colors": [
+      {"hex": "#A8DADC", "name": "Xanh pastel"},
+      {"hex": "#457B9D", "name": "Xanh navy nhạt"},
+      {"hex": "#F1FAEE", "name": "Trắng ngà"},
+      {"hex": "#E63946", "name": "Đỏ berry"},
+      {"hex": "#1D3557", "name": "Xanh navy đậm"}
+    ],
+    "style_suggestions": [
+      "Áo sơ mi trắng ngà hoặc xanh pastel",
+      "Quần jeans xanh nhạt hoặc xám",
+      "Váy liền tím oải hương nhạt",
+      "Phụ kiện bạc hoặc vàng trắng",
+      "Áo len màu xám xanh nhạt"
+    ],
+    "lip_colors": [
+      {"name": "Hồng phấn mát", "brands": ["YSL", "3CE", "Rom&nd"]},
+      {"name": "Tím oải hương nhạt", "brands": ["Peripera", "Etude", "Maybelline"]},
+      {"name": "Đỏ berry dịu", "brands": ["MAC", "Dior", "Merzy"]},
+      {"name": "Nude lạnh với ánh hồng", "brands": ["Kiko", "Fenty", "Laneige"]}
+    ],
+    "hair_colors": [
+      {"name": "Nâu tro mát", "code": "6.1"},
+      {"name": "Vàng bạch kim", "code": "10.1"},
+      {"name": "Đen xanh ánh than", "code": "1.1"},
+      {"name": "Highlight bạc hoặc xám", "code": "9.1"}
+    ],
+    "best_for": ["Da sáng lạnh", "Người có tông da hồng", "Tóc đen tự nhiên"],
+    "avoid_colors": ["Cam cháy", "Vàng đậm", "Nâu đỏ"]
+  },

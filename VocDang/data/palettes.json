@@ -11,3 +11,25 @@
       {"hex": "#118AB2", "name": "Xanh biển sáng"},
       {"hex": "#EF476F", "name": "Hồng đào"}
     ],
+    "style_suggestions": [
+      "Váy hoa nhẹ nhàng với tông màu pastel ấm",
+      "Áo màu cam san hô hoặc vàng chanh",
+      "Quần tây màu beige ấm kết hợp áo sáng màu",
+      "Phụ kiện vàng sáng hoặc đồng",
+      "Màu trắng kem thay vì trắng tinh"
+    ],
+    "lip_colors": [
+      {"name": "Hồng đào", "brands": ["3CE", "Rom&nd", "L'Oréal"]},
+      {"name": "San hô ấm", "brands": ["Maybelline", "MAC", "Innisfree"]},
+      {"name": "Đỏ cam nhẹ", "brands": ["Chanel", "Dior", "Merzy"]},
+      {"name": "Nude ấm với ánh vàng", "brands": ["Kiko", "Colourpop", "Fenty"]}
+    ],
+    "hair_colors": [
+      {"name": "Nâu vàng ánh mật ong", "code": "7.3"},
+      {"name": "Vàng mật ong sáng", "code": "8.3"},
+      {"name": "Nâu caramel ấm", "code": "6.34"},
+      {"name": "Highlight vàng sáng", "code": "9.3"}
+    ],
+    "best_for": ["Da sáng ấm", "Người có tông da vàng ấm", "Tóc nâu tự nhiên"],
+    "avoid_colors": ["Xanh lạnh", "Tím xám", "Đen tuyền"]
+  },

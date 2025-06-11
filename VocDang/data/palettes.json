@@ -101,3 +101,38 @@
     "best_for": ["Da ngăm ấm", "Người có tông da vàng đậm", "Tóc nâu đậm tự nhiên"],
     "avoid_colors": ["Xanh neon", "Hồng phấn", "Tím pastel"]
   },
+  "Winter": {
+    "title": "Mùa Đông - Tông Lạnh Đậm",
+    "description": "Bạn thuộc nhóm Mùa Đông với tông da lạnh và đậm. Màu sắc phù hợp với bạn là những tông jewel tone đậm như đỏ ruby, xanh sapphire, đen tuyền và trắng tinh. Phong cách mạnh mẽ, quyến rũ sẽ làm nổi bật vẻ đẹp của bạn.",
+    "undertone": "Lạnh (Cool)",
+    "brightness": "Trung bình đến đậm",
+    "colors": [
+      {"hex": "#000080", "name": "Xanh navy đậm"},
+      {"hex": "#4B0082", "name": "Tím đậm"},
+      {"hex": "#DC143C", "name": "Đỏ ruby"},
+      {"hex": "#000000", "name": "Đen tuyền"},
+      {"hex": "#FFFFFF", "name": "Trắng tinh"}
+    ],
+    "style_suggestions": [
+      "Áo khoác đen hoặc xanh navy",
+      "Váy màu jewel tone đậm",
+      "Quần tây trắng tinh với áo sáng màu",
+      "Phụ kiện ánh kim lạnh",
+      "Set đồ đơn sắc tương phản"
+    ],
+    "lip_colors": [
+      {"name": "Đỏ ruby đậm", "brands": ["MAC", "Dior", "Chanel"]},
+      {"name": "Tím đậm quý phái", "brands": ["YSL", "3CE", "Maybelline"]},
+      {"name": "Hồng fuchsia nổi bật", "brands": ["Fenty", "Rom&nd", "Merzy"]},
+      {"name": "Nude với ánh hồng lạnh", "brands": ["Kiko", "L'Oréal", "Peripera"]}
+    ],
+    "hair_colors": [
+      {"name": "Đen tuyền ánh xanh", "code": "1.1"},
+      {"name": "Nâu lạnh sâu", "code": "4.1"},
+      {"name": "Xám bạc hiện đại", "code": "10.1"},
+      {"name": "Ombre đen - xám", "code": "1/10"}
+    ],
+    "best_for": ["Da ngăm lạnh", "Người có tông da hồng đậm", "Tóc đen tự nhiên"],
+    "avoid_colors": ["Cam nhạt", "Vàng chanh", "Nâu vàng"]
+  }
+}

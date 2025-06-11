@@ -142,3 +142,46 @@
       border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
     
+     /* New footer styles */
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .footer-column h3 {
+      position: relative;
+      padding-bottom: 12px;
+      margin-bottom: 20px;
+    }
+    
+    .footer-column h3::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 40px;
+      height: 2px;
+      background: linear-gradient(to right, var(--primary-blue), var(--primary-pink));
+    }
+    
+    .footer-link:hover {
+      transform: translateX(5px);
+    }
+    
+    .social-icon {
+      transition: all 0.3s ease;
+    }
+    
+    .social-icon:hover {
+      transform: translateY(-3px);
+    }
+    
+    .footer-bottom {
+      border-top: 1px solid rgba(0, 0, 0, 0.05);
+    }
+    
+    .dark .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+  </style>
+  

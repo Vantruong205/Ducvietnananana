@@ -7,7 +7,7 @@
 
 Một ứng dụng web hiện đại giúp bạn chăm sóc **làn da**, **vóc dáng**, và **tinh thần** với giao diện thân thiện, trải nghiệm cá nhân hóa, và công nghệ AI tiên tiến. Đây là giải pháp **all-in-one** để nâng tầm vẻ đẹp và sức khỏe của bạn! Đây là dự án học thuật của môn Kỹ thuật phần mềm, do Nguyễn Thị Quỳnh Anh và Vương Đức Việt thực hiện dưới sự hướng dẫn của giảng viên Trịnh Thanh Bình .
 ### 🎥 Demo sản phẩm
-- 📺 **Video Demo**: [Xem trên YouTube](https://www.youtube.com/watch?v=7-uEXbKXTy8&t=5s)
+- 📺 **Video Demo**: [Xem trên YouTube]
 - 🔗 **GitHub Repository**:https://github.com/Vantruong205/Ducvietnananana
 
 ---
@@ -75,7 +75,7 @@ pip install flask ultralytics opencv-python numpy albumentations gunicorn torch
 
 **1. Clone repository**
 ```bash
-git clone https://github.com/htrsng/KTPM_nhom2.git
+git clone https://github.com/Vantruong205/Ducvietnananana
 ```
  **2. Cài đặt dependencies**
 ```bash 
@@ -95,8 +95,8 @@ cd SKIN
 python app.py 
 ``` 
 - Chạy tổng quan : 
-   Mở file index.html trong thư mục gốc (KTPM_nhom2/index.html) bằng Live Server (VD: extension Live Server trong VS Code). Đảm bảo server Flask đang chạy để các tính năng backend hoạt động.
-   **Lưu ý:** Cần chạy file Flask trước khi chạy mở file index.html trong thư mục gốc (KTPM_nhom2/index.html)
+   Mở file index.html trong thư mục gốc bằng Live Server (VD: extension Live Server trong VS Code). Đảm bảo server Flask đang chạy để các tính năng backend hoạt động.
+   **Lưu ý:** Cần chạy file Flask trước khi chạy mở file index.html trong thư mục gốc
 --- 
 
 ### 🚀 Sử dụng 
@@ -168,7 +168,7 @@ KTPM_nhom2/
 
 ### 🤝 Đóng góp 
 Chúng tôi hoan nghênh mọi đóng góp ! Để tham gia : 
-- **1.Fork repository**: https://github.com/htrsng/KTPM_nhom2
+- **1.Fork repository**: https://github.com/Vantruong205/Ducvietnananana
 - **2. Tạo branch :** 
  ```bash 
  git checkout -b feature/ten-tinh-nang
@@ -195,9 +195,6 @@ Chúng tôi hoan nghênh mọi đóng góp ! Để tham gia :
 |-----------------------|------------------|-------------|-------------------------|--------------------|
 | Nguyễn Thị Quỳnh Anh | 23010147        | Phát triển | 23010147@st.phenikaa-uni.edu.vn      | [QuynhAnh-31](https://github.com/QuynhAnh-31) |
 | Vương Đức Việt        | 23010589       | Phát triển | 23010589@st.phenikaa-uni.edu.vn      | [Vantruong205](https://github.com/Vantruong205) |
-
-
-
 
 
 

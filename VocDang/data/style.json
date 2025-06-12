@@ -119,5 +119,64 @@
       }
     ]
   },
-
+  "hourglass": {
+    "title": "Dáng Đồng Hồ Cát",
+    "description": "Vóc dáng đồng hồ cát có vai và hông cân đối, với vòng eo thon gọn rõ rệt, tạo đường cong tự nhiên đẹp mắt. Đây là dáng người lý tưởng, thường được cả nam và nữ mong muốn, vì dễ dàng phù hợp với nhiều kiểu trang phục.",
+    "recommendations_male": [
+      {
+        "item": "Áo sơ mi ôm vừa hoặc áo thun dáng fitted",
+        "reason": "Tôn lên vòng eo thon và đường cong tự nhiên của cơ thể."
+      },
+      {
+        "item": "Quần jeans cạp cao hoặc quần chinos ôm vừa",
+        "reason": "Nhấn mạnh tỷ lệ cân đối, làm nổi bật vòng eo và hông."
+      },
+      {
+        "item": "Áo khoác dáng ôm, ngắn (bomber hoặc blazer fitted)",
+        "reason": "Tôn lên đường cong cơ thể, giữ được sự cân đối giữa thân trên và dưới."
+      }
+    ],
+    "recommendations_female": [
+      {
+        "item": "Váy ôm hoặc váy bút chì",
+        "reason": "Tôn lên đường cong tự nhiên, đặc biệt là vòng eo thon gọn."
+      },
+      {
+        "item": "Áo bó sát hoặc áo peplum",
+        "reason": "Làm nổi bật vòng eo, tạo điểm nhấn cho dáng đồng hồ cát."
+      },
+      {
+        "item": "Quần cạp cao hoặc thắt lưng",
+        "reason": "Nhấn mạnh vòng eo, giữ tỷ lệ cơ thể cân đối và hài hòa."
+      }
+    ],
+    "avoid_male": [
+      {
+        "item": "Áo sơ mi hoặc áo khoác quá rộng",
+        "reason": "Che mất đường cong tự nhiên, làm cơ thể trông thẳng và kém nổi bật."
+      },
+      {
+        "item": "Quần ống rộng quá mức",
+        "reason": "Phá vỡ tỷ lệ cân đối, làm mất đi vẻ hài hòa của dáng đồng hồ cát."
+      },
+      {
+        "item": "Áo thun không có form dáng rõ ràng",
+        "reason": "Làm mất điểm nhấn vòng eo, khiến cơ thể trông kém nổi bật."
+      }
+    ],
+    "avoid_female": [
+      {
+        "item": "Trang phục quá rộng",
+        "reason": "Che mất đường cong tự nhiên, làm cơ thể trông thẳng và kém nổi bật."
+      },
+      {
+        "item": "Áo khoác dáng hộp hoặc quá dài",
+        "reason": "Che mất vòng eo thon, làm mất đi đặc điểm nổi bật của dáng này."
+      },
+      {
+        "item": "Quần ống rộng quá mức",
+        "reason": "Phá vỡ tỷ lệ cân đối, làm cơ thể trông kém hài hòa."
+      }
+    ]
+  },
     

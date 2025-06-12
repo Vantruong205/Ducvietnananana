@@ -153,3 +153,40 @@
       text-align: right;
       margin-left: auto;
     }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    input {
+      width: 100%;
+      padding: 15px 20px;
+      border: none;
+      border-radius: 30px;
+      box-sizing: border-box;
+      background: rgba(255, 255, 255, 0.8);
+      box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      font-size: 16px;
+    }
+
+    input:focus {
+      outline: none;
+      background: #fff;
+      box-shadow: 0 0 15px rgba(0, 188, 212, 0.4);
+    }
+
+    .clear-button {
+      margin-top: 20px;
+      padding: 12px 25px;
+      background: linear-gradient(45deg, #4fc3f7, #0288d1);
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      color: white;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }

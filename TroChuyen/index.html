@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chatbot Cảm Xúc</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', Arial, sans-serif;
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #e0f7fa 0%, #b3e5fc 50%, #e1f5fe 100%);
+      overflow: hidden;
+    }
+
+    body.bg-happy { background: linear-gradient(135deg, #fffde7 0%, #fff9c4 100%) !important; }
+    body.bg-sad { background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%) !important; }
+    body.bg-angry { background: linear-gradient(135deg, #ffebee 0%, #ffe0b2 100%) !important; }
+    body.bg-share { background: linear-gradient(135deg, #fde4ec 0%, #fff1f7 100%) !important; }
+
+    .emotion-panel {
+      position: fixed;
+      right: 40px;
+      top: 20%;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      z-index: 1000;
+    }
+
+    .emotion-ball {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: none;
+      font-size: 40px;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .emotion-ball::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.3), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .emotion-ball:hover::before {
+      opacity: 1;
+    }
+
+    .emotion-ball:hover {
+      transform: translateY(-8px) scale(1.05);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .emotion-ball:active {
+      transform: scale(0.9);
+    }
+
+    .emotion-ball.happy, .chat-box.happy { background: linear-gradient(45deg, #FFF176, #FFD54F); }
+    .emotion-ball.sad, .chat-box.sad { background: linear-gradient(45deg, #90CAF9, #B3E5FC); }
+    .emotion-ball.angry, .chat-box.angry { background: linear-gradient(45deg, #FF8A65, #E57373); }
+    .emotion-ball.share, .chat-box.share { background: linear-gradient(45deg, #f8bbd0, #fce4ec); }
+
+    .chat-box {
+      display: none;
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 550px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(225, 245, 254, 0.9));
+      border-radius: 30px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+      padding: 30px;
+      animation: slideIn 0.4s ease-out;
+      backdrop-filter: blur(8px);
+    }
+
+    .chat-box.happy { background: linear-gradient(135deg, rgba(255, 249, 196, 0.95), rgba(255, 224, 130, 0.9)); }
+    .chat-box.sad { background: linear-gradient(135deg, rgba(187, 222, 251, 0.95), rgba(236, 239, 241, 0.9)); }
+    .chat-box.angry { background: linear-gradient(135deg, rgba(239, 154, 154, 0.95), rgba(255, 112, 67, 0.9)); }
+    .chat-box.share { background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%); }
+
+    @keyframes slideIn {
+      from {
+        transform: translate(-50%, -70%);
+        opacity: 0;
+      }
+      to {
+        transform: translate(-50%, -50%);
+        opacity: 1;
+      }
+    }
+
+    .chat-box.active {
+      display: block;
+    }
+
+    .chat-header {
+      font-size: 28px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      text-align: center;
+      color: #222;
+      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .chat-content {
+      max-height: 400px;
+      overflow-y: auto;
+      margin-bottom: 20px;
+      padding: 15px;
+      border-radius: 15px;
+      background: rgba(255, 255, 255, 0.5);
+    }
+
+    .bot-message.happy { background: linear-gradient(45deg, #FFF9C4, #FFE082); color: #333; }
+    .user-message.happy { background: linear-gradient(45deg, #FFE082, #FFF9C4); color: #333; }
+    .bot-message.sad { background: linear-gradient(45deg, #BBDEFB, #ECEFF1); color: #333; }
+    .user-message.sad { background: linear-gradient(45deg, #ECEFF1, #BBDEFB); color: #333; }
+    .bot-message.angry { background: linear-gradient(45deg, #EF9A9A, #FF7043); color: #fff; }
+    .user-message.angry { background: linear-gradient(45deg, #FF7043, #EF9A9A); color: #fff; }
+    .bot-message.share { background: linear-gradient(45deg, #fce4ec, #f8bbd0); color: #333; }
+    .user-message.share { background: linear-gradient(45deg, #f8bbd0, #fce4ec); color: #333; }
+
+    .bot-message {
+      padding: 12px 18px;
+      border-radius: 20px 20px 20px 5px;
+      margin: 10px 15px;
+      max-width: 70%;
+      animation: fadeIn 0.4s ease;
+    }
+
+    .user-message {
+      padding: 12px 18px;
+      border-radius: 20px 20px 5px 20px;
+      margin: 10px 15px;
+      max-width: 70%;
+      text-align: right;
+      margin-left: auto;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    input {
+      width: 100%;
+      padding: 15px 20px;
+      border: none;
+      border-radius: 30px;
+      box-sizing: border-box;
+      background: rgba(255, 255, 255, 0.8);
+      box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      font-size: 16px;
+    }
+
+    input:focus {
+      outline: none;
+      background: #fff;
+      box-shadow: 0 0 15px rgba(0, 188, 212, 0.4);
+    }
+
+    .clear-button {
+      margin-top: 20px;
+      padding: 12px 25px;
+      background: linear-gradient(45deg, #4fc3f7, #0288d1);
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      color: white;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .clear-button.happy { background: linear-gradient(45deg, #FFF9C4, #FFE082); color: #333; }
+    .clear-button.sad { background: linear-gradient(45deg, #BBDEFB, #ECEFF1); color: #333; }
+    .clear-button.angry { background: linear-gradient(45deg, #EF9A9A, #FF7043); color: #fff; }
+    .clear-button.share { background: linear-gradient(45deg, #f8bbd0, #fce4ec); color: #333; }
+
+    .clear-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      transition: 0.5s;
+    }
+
+    .clear-button:hover::before {
+      left: 100%;
+    }
+
+    .clear-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .chat-content::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    .chat-content::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 10px;
+    }
+
+    .chat-content.happy::-webkit-scrollbar-thumb {
+      background: linear-gradient(45deg, #FFF9C4, #FFE082);
+      border-radius: 10px;
+    }
+
+    .chat-content.sad::-webkit-scrollbar-thumb {
+      background: linear-gradient(45deg, #BBDEFB, #ECEFF1);
+      border-radius: 10px;
+    }
+
+    .chat-content.angry::-webkit-scrollbar-thumb {
+      background: linear-gradient(45deg, #EF9A9A, #FF7043);
+      border-radius: 10px;
+    }
+
+    .chat-content.share::-webkit-scrollbar-thumb {
+      background: linear-gradient(45deg, #f8bbd0, #fce4ec);
+      border-radius: 10px;
+    }
+
+    .chat-content::-webkit-scrollbar-thumb:hover {
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <div class="emotion-panel">
+    <button class="emotion-ball happy" onclick="selectEmotion('happy')">😊</button>
+    <button class="emotion-ball sad" onclick="selectEmotion('sad')">😢</button>
+    <button class="emotion-ball angry" onclick="selectEmotion('angry')">😠</button>
+    <button class="emotion-ball share" onclick="selectEmotion('share')">🗣️</button>
+  </div>
+
+  <div class="chat-box" id="chatBox">
+    <div class="chat-header" id="chatHeader"></div>
+    <div class="chat-content" id="chatContent"></div>
+    <input type="text" id="userInput" placeholder="Gõ tin nhắn..." onkeypress="if(event.key === 'Enter') sendMessage()">
+    <button class="clear-button" id="clearButton" onclick="clearChat()">Xóa Chat</button>
+  </div>
+
+  <script>
+    const staticResponses = {
+      happy: [
+        "Nghe vui ghê! Có chuyện gì vui cậu cứ kể tớ nha. Tớ luôn ở đây và sẵn sàng lắng nghe nè 😍",
+        "Vui thế! Còn gì có thể kể thêm mình nghe nha! 💛",
+        "Mỗi ngày có điều vui là tuyệt vời rồi đó! Cậu còn muốn chia sẻ gì với tớ nghe nữa không? ✨",
+        "Haha, bạn đáng yêu quá đi mất! Người đáng yêu này còn gì muốn kể tớ nghe nữa không? 🥳"
+        
+      ],
+      sad: [
+        "Đừng buồn nữa nha, có mình ở đây nè. 🤗",
+        "Có mình ở bên, bạn không cô đơn đâu. 💙",
+        "Nếu khóc thì cứ khóc đi, rồi sẽ ổn thôi. 😭",
+        "Bạn ổn không? Mình nghe nè, kể hết đi. 😔"
+      ],
+      angry: [
+        "Đừng để cơn giận làm bạn mệt mỏi nhé! 😤",
+        "Hít thở sâu nào, rồi kể mình nghe nhé. 😮‍💨",
+        "Ai khiến bạn bực mình vậy? Có mình rồi, không lo! 😡❤️",
+        "Bạn xứng đáng được đối xử tốt hơn. 💪"
+      ],
+      share: [
+        "Nói đi nói đi, mình nghe từng chữ nè! 🐻",
+        "Thích nghe chuyện của bạn lắm đó! 😘",
+        "Mình đang hóng đây nè! 😆",
+        "Chia sẻ ra sẽ thấy dễ chịu hơn đó! 💌"
+      ]
+    };
+
+    let selectedEmotion = null;
+
+    function selectEmotion(emotion) {
+      selectedEmotion = emotion;
+      const chatBox = document.getElementById('chatBox');
+      const chatHeader = document.getElementById('chatHeader');
+      const chatContent = document.getElementById('chatContent');
+      const clearButton = document.getElementById('clearButton');
+
+      // Xóa lớp cảm xúc cũ
+      chatBox.classList.remove('happy', 'sad', 'angry', 'share');
+      chatContent.classList.remove('happy', 'sad', 'angry', 'share');
+      clearButton.classList.remove('happy', 'sad', 'angry', 'share');
+      document.body.classList.remove('bg-happy', 'bg-sad', 'bg-angry', 'bg-share'); 
+
+      // Thêm lớp cảm xúc mới
+      chatBox.classList.add(emotion);
+      chatContent.classList.add(emotion);
+      clearButton.classList.add(emotion);
+      document.body.classList.add('bg-' + emotion); 
+
+      chatBox.classList.add('active');
+      const headerText = {
+        happy: "Cảm xúc: Vui vẻ 😊",
+        sad: "Cảm xúc: Buồn 😢",
+        angry: "Cảm xúc: Tức giận 😠",
+        share: "Cảm xúc: Chia sẻ 🗣️"
+      };
+      chatHeader.textContent = headerText[emotion];
+      chatContent.innerHTML = `<p class="bot-message ${emotion}">${getWelcomeMessage(emotion)}</p>`;
+      document.getElementById('userInput').focus();
+    }
+
+    function getWelcomeMessage(emotion) {
+      switch (emotion) {
+        case 'happy': return "Bạn có chuyện gì vui trong hôm nay vậy ?  Kể tớ nghe với nhé tớ hóng chờ câu chuyện của cậu lắm!";
+        case 'sad': return "Nay trong lòng cậu có gì đè nặng hở ? 😢 Mình luôn ở đây vì bạn. Đừng ngại chia sẻ nhé !";
+        case 'angry': return "Bạn đang giận chuyện gì đó ? Chia sẻ cùng tớ đi điều ấy có thể giúp cậu thoải mái hơn nhiều đấy . Tớ ở đây và luôn sẵn sàng lắng nghe bạn. ";
+        case 'share': return "Bạn muốn chia sẻ điều gì phải không? Mình đang lắng nghe nè. ";
+        default: return "Chào bạn! Hãy chọn cảm xúc để bắt đầu trò chuyện nhé!";
+      }
+    }
+
+    function sendMessage() {
+      const userInput = document.getElementById('userInput');
+      const userMessage = userInput.value.trim();
+      if (!userMessage || !selectedEmotion) {
+        alert("Vui lòng chọn cảm xúc và nhập tin nhắn!");
+        return;
+      }
+
+      const chatContent = document.getElementById('chatContent');
+      chatContent.innerHTML += `<p class="user-message ${selectedEmotion}">${userMessage}</p>`;
+      userInput.value = '';
+
+      const botReply = staticResponses[selectedEmotion][Math.floor(Math.random() * staticResponses[selectedEmotion].length)];
+      chatContent.innerHTML += `<p class="bot-message ${selectedEmotion}">${botReply}</p>`;
+      chatContent.scrollTop = chatContent.scrollHeight;
+    }
+
+    function clearChat() {
+      const chatContent = document.getElementById('chatContent');
+      chatContent.innerHTML = `<p class="bot-message ${selectedEmotion}">${getWelcomeMessage(selectedEmotion)}</p>`;
+      document.getElementById('userInput').focus();
+    }
+  </script>
+</body>
+</html>

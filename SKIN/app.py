@@ -170,3 +170,30 @@ def calculate_skin_score(predictions):
             issue_confidences[label].append(confidence)
     score = max(0, 10 - total_penalty * 5)
     return round(score, 1), issue_counts, issue_confidences
+def suggest_improvements(issue_counts, issue_confidences):
+    improvements = {"mụn": [], "lỗ chân lông to": [], "thâm/nám": []}
+    if issue_counts["acne"] > 0:
+        avg_conf = sum(issue_confidences["acne"]) / len(issue_confidences["acne"]) if issue_confidences["acne"] else 0
+        improvements["mụn"] = [
+            "Giữ da mặt sạch, rửa mặt 2 lần/ngày với sữa rửa mặt dịu nhẹ.",
+            "Tránh sờ tay lên mặt và không tự ý nặn mụn.",
+            "Sử dụng kem trị mụn không kê đơn (chứa benzoyl peroxide hoặc salicylic acid)."
+        ] if avg_conf <= 0.5 else [
+            "Thăm khám bác sĩ da liễu để được tư vấn chuyên sâu.",
+            "Sử dụng sản phẩm trị mụn chứa BHA hoặc retinoid theo hướng dẫn của chuyên gia.",
+            "Hạn chế ăn đồ cay nóng, dầu mỡ và uống đủ nước."
+        ]
+    if issue_counts["pores"] > 0:
+        improvements["lỗ chân lông to"] = [
+            "Tẩy tế bào chết 1-2 lần/tuần với sản phẩm dịu nhẹ phù hợp da.",
+            "Sử dụng toner/nước hoa hồng giúp se khít lỗ chân lông.",
+            "Luôn tẩy trang sạch sẽ và giữ da thông thoáng.",
+            "Hạn chế trang điểm dày và tránh thức khuya."
+        ]
+    if issue_counts["pigment"] > 0:
+        improvements["thâm/nám"] = [
+            "Dùng kem chống nắng SPF 30+ mỗi ngày, thoa lại sau mỗi 2-3 tiếng.",
+            "Sử dụng serum vitamin C hoặc sản phẩm làm sáng da có nguồn gốc rõ ràng.",
+            "Tránh nắng kỹ, đội mũ/nón và đeo khẩu trang khi ra ngoài."
+        ]
+    return improvements

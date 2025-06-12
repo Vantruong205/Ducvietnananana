@@ -505,9 +505,3 @@ function displayResult(shapeData) {
   }
 }
 
-// Hiển thị từ icon
-function showShapeInfo(shape, gender) {
-  if (window.bodyShapes?.[shape]) {
-    displayResult({ ...window.bodyShapes[shape], gender, shape });
-  }
-}

@@ -239,3 +239,64 @@
       }
     ]
   },
+  "inverted-triangle": {
+    "title": "Dáng Tam Giác Ngược",
+    "description": "Vóc dáng tam giác ngược có vai rộng hơn hông, tạo cảm giác phần thân trên mạnh mẽ và phần dưới thon gọn hơn. Dáng này thường thấy ở nam giới có thân hình thể thao hoặc nữ giới có vai rộng, hông nhỏ, và vòng eo không quá rõ rệt.",
+    "recommendations_male": [
+      {
+        "item": "Áo sơ mi dáng suông hoặc áo thun cổ tròn",
+        "reason": "Giảm độ rộng của vai, tạo cảm giác thân trên nhẹ nhàng hơn."
+      },
+      {
+        "item": "Quần jeans ống rộng hoặc quần chinos sáng màu",
+        "reason": "Làm rộng phần hông, cân bằng với vai rộng để tạo tỷ lệ hài hòa."
+      },
+      {
+        "item": "Áo khoác dáng dài, hơi ôm",
+        "reason": "Kéo dài thân hình, làm giảm sự chú ý vào vai rộng."
+      }
+    ],
+    "recommendations_female": [
+      {
+        "item": "Áo cổ chữ V hoặc áo có chi tiết nhẹ nhàng (ren, bèo nhún)",
+        "reason": "Làm mềm phần vai, giảm cảm giác vai rộng và tạo sự nữ tính."
+      },
+      {
+        "item": "Váy chữ A hoặc váy xòe",
+        "reason": "Làm rộng phần hông, cân bằng với vai để tạo tỷ lệ hài hòa."
+      },
+      {
+        "item": "Quần ống loe hoặc palazzo",
+        "reason": "Thêm độ rộng cho phần dưới, giúp cân bằng với vai rộng."
+      }
+    ],
+    "avoid_male": [
+      {
+        "item": "Áo thun hoặc sơ mi có cầu vai lớn",
+        "reason": "Làm vai trông rộng hơn, khiến cơ thể mất cân đối."
+      },
+      {
+        "item": "Quần skinny hoặc ống bó",
+        "reason": "Làm phần dưới trông nhỏ hơn, nhấn mạnh sự mất cân đối với vai."
+      },
+      {
+        "item": "Áo khoác ngắn, ôm sát",
+        "reason": "Làm lộ vai rộng, khiến thân trên trông nặng nề hơn."
+      }
+    ],
+    "avoid_female": [
+      {
+        "item": "Áo có chi tiết phồng hoặc cầu vai",
+        "reason": "Làm vai trông rộng hơn, khiến cơ thể trông mất cân đối."
+      },
+      {
+        "item": "Quần skinny sáng màu",
+        "reason": "Làm nổi bật phần hông nhỏ, tạo sự tương phản mạnh với vai."
+      },
+      {
+        "item": "Áo crop top",
+        "reason": "Làm lộ sự mất cân đối giữa vai rộng và hông nhỏ."
+      }
+    ]
+  }
+}

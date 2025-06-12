@@ -326,3 +326,39 @@
       chatContent.innerHTML = `<p class="bot-message ${emotion}">${getWelcomeMessage(emotion)}</p>`;
       document.getElementById('userInput').focus();
     }
+
+    function getWelcomeMessage(emotion) {
+      switch (emotion) {
+        case 'happy': return "Bạn có chuyện gì vui trong hôm nay vậy ?  Kể tớ nghe với nhé tớ hóng chờ câu chuyện của cậu lắm!";
+        case 'sad': return "Nay trong lòng cậu có gì đè nặng hở ? 😢 Mình luôn ở đây vì bạn. Đừng ngại chia sẻ nhé !";
+        case 'angry': return "Bạn đang giận chuyện gì đó ? Chia sẻ cùng tớ đi điều ấy có thể giúp cậu thoải mái hơn nhiều đấy . Tớ ở đây và luôn sẵn sàng lắng nghe bạn. ";
+        case 'share': return "Bạn muốn chia sẻ điều gì phải không? Mình đang lắng nghe nè. ";
+        default: return "Chào bạn! Hãy chọn cảm xúc để bắt đầu trò chuyện nhé!";
+      }
+    }
+
+    function sendMessage() {
+      const userInput = document.getElementById('userInput');
+      const userMessage = userInput.value.trim();
+      if (!userMessage || !selectedEmotion) {
+        alert("Vui lòng chọn cảm xúc và nhập tin nhắn!");
+        return;
+      }
+
+      const chatContent = document.getElementById('chatContent');
+      chatContent.innerHTML += `<p class="user-message ${selectedEmotion}">${userMessage}</p>`;
+      userInput.value = '';
+
+      const botReply = staticResponses[selectedEmotion][Math.floor(Math.random() * staticResponses[selectedEmotion].length)];
+      chatContent.innerHTML += `<p class="bot-message ${selectedEmotion}">${botReply}</p>`;
+      chatContent.scrollTop = chatContent.scrollHeight;
+    }
+
+    function clearChat() {
+      const chatContent = document.getElementById('chatContent');
+      chatContent.innerHTML = `<p class="bot-message ${selectedEmotion}">${getWelcomeMessage(selectedEmotion)}</p>`;
+      document.getElementById('userInput').focus();
+    }
+  </script>
+</body>
+</html>

@@ -94,3 +94,36 @@
     .chat-box.sad { background: linear-gradient(135deg, rgba(187, 222, 251, 0.95), rgba(236, 239, 241, 0.9)); }
     .chat-box.angry { background: linear-gradient(135deg, rgba(239, 154, 154, 0.95), rgba(255, 112, 67, 0.9)); }
     .chat-box.share { background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%); }
+
+    @keyframes slideIn {
+      from {
+        transform: translate(-50%, -70%);
+        opacity: 0;
+      }
+      to {
+        transform: translate(-50%, -50%);
+        opacity: 1;
+      }
+    }
+
+    .chat-box.active {
+      display: block;
+    }
+
+    .chat-header {
+      font-size: 28px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      text-align: center;
+      color: #222;
+      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .chat-content {
+      max-height: 400px;
+      overflow-y: auto;
+      margin-bottom: 20px;
+      padding: 15px;
+      border-radius: 15px;
+      background: rgba(255, 255, 255, 0.5);
+    }

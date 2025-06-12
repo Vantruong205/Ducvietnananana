@@ -127,3 +127,29 @@
       border-radius: 15px;
       background: rgba(255, 255, 255, 0.5);
     }
+    
+    .bot-message.happy { background: linear-gradient(45deg, #FFF9C4, #FFE082); color: #333; }
+    .user-message.happy { background: linear-gradient(45deg, #FFE082, #FFF9C4); color: #333; }
+    .bot-message.sad { background: linear-gradient(45deg, #BBDEFB, #ECEFF1); color: #333; }
+    .user-message.sad { background: linear-gradient(45deg, #ECEFF1, #BBDEFB); color: #333; }
+    .bot-message.angry { background: linear-gradient(45deg, #EF9A9A, #FF7043); color: #fff; }
+    .user-message.angry { background: linear-gradient(45deg, #FF7043, #EF9A9A); color: #fff; }
+    .bot-message.share { background: linear-gradient(45deg, #fce4ec, #f8bbd0); color: #333; }
+    .user-message.share { background: linear-gradient(45deg, #f8bbd0, #fce4ec); color: #333; }
+
+    .bot-message {
+      padding: 12px 18px;
+      border-radius: 20px 20px 20px 5px;
+      margin: 10px 15px;
+      max-width: 70%;
+      animation: fadeIn 0.4s ease;
+    }
+
+    .user-message {
+      padding: 12px 18px;
+      border-radius: 20px 20px 5px 20px;
+      margin: 10px 15px;
+      max-width: 70%;
+      text-align: right;
+      margin-left: auto;
+    }

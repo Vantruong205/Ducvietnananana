@@ -250,3 +250,17 @@
     }
   </style>
 </head>
+<body>
+  <div class="emotion-panel">
+    <button class="emotion-ball happy" onclick="selectEmotion('happy')">😊</button>
+    <button class="emotion-ball sad" onclick="selectEmotion('sad')">😢</button>
+    <button class="emotion-ball angry" onclick="selectEmotion('angry')">😠</button>
+    <button class="emotion-ball share" onclick="selectEmotion('share')">🗣️</button>
+  </div>
+
+  <div class="chat-box" id="chatBox">
+    <div class="chat-header" id="chatHeader"></div>
+    <div class="chat-content" id="chatContent"></div>
+    <input type="text" id="userInput" placeholder="Gõ tin nhắn..." onkeypress="if(event.key === 'Enter') sendMessage()">
+    <button class="clear-button" id="clearButton" onclick="clearChat()">Xóa Chat</button>
+  </div>

@@ -222,3 +222,152 @@ def suggest_products(issue_counts):
             "Kem dưỡng sáng da Kiehl’s Clearly Corrective Dark Spot Solution"
         ]
     return products
+def sanitize_filename(filename):
+    return re.sub(r'[^a-zA-Z0-9._-]', '_', filename)
+
+@app.route("/")
+def index():
+    logger.info("Serving index.html")
+    return render_template("index.html")
+
+@app.route("/predict", methods=["POST"])
+def predict():
+    logger.info("Received /predict request")
+    if not all(side in request.files for side in ["left", "right", "front"]):
+        return jsonify({"error": "Vui lòng tải lên cả ba ảnh"}), 400
+
+    images = {
+        "left": request.files["left"],
+        "right": request.files["right"],
+        "front": request.files["front"]
+    }
+
+    image_paths = {}
+    filenames = {}
+    result_filenames = {}
+    results = {}
+
+    try:
+        for side, image in images.items():
+            if not image or image.filename == "":
+                return jsonify({"error": f"Không có ảnh {side}"}), 400
+            processed_image = preprocess_image(image)
+            ext = '.jpg'
+            sanitized_filename = sanitize_filename(os.path.splitext(image.filename)[0])
+            filename = f"{side}_{uuid.uuid4().hex}_{sanitized_filename}{ext}"
+            filepath = os.path.join(app.config["UPLOAD_FOLDER"], filename)
+            with open(filepath, 'wb') as f:
+                f.write(processed_image)
+            image_paths[side] = filepath
+            filenames[side] = filename
+
+            result = model.predict(
+                filepath,
+                save=True,
+                project=app.config["RESULT_FOLDER"],
+                name="predict",
+                exist_ok=True,
+                conf=0.2,
+                augment=True
+            )
+            results[side] = result[0]
+            result_filepath = os.path.join(app.config["PREDICT_FOLDER"], filename)
+            if not os.path.exists(result_filepath):
+                return jsonify({"error": f"Kết quả YOLO cho {side} không được lưu"}), 500
+            result_filenames[side] = filename
+
+        skin_score, issue_counts, issue_confidences = calculate_skin_score([results["left"], results["right"], results["front"]])
+        improvements = suggest_improvements(issue_counts, issue_confidences)
+        products = suggest_products(issue_counts)
+
+        response = {
+            "score": skin_score,
+            "analysis": {
+                "left": [
+                    {"label": box_label, "confidence": float(box.conf)}
+                    for box in results["left"].boxes
+                    if (box_label := results["left"].names[int(box.cls)]) not in ["pigment", "pores"]
+                ] or [{"label": "Không phát hiện", "confidence": 0.0}],
+                "right": [{"label": results["right"].names[int(box.cls)], "confidence": float(box.conf)} for box in results["right"].boxes] or [{"label": "Không phát hiện", "confidence": 0.0}],
+                "front": [{"label": results["front"].names[int(box.cls)], "confidence": float(box.conf)} for box in results["front"].boxes] or [{"label": "Không phát hiện", "confidence": 0.0}]
+            },
+            "image_urls": {
+                "left": f"/static/results/predict/{result_filenames['left']}",
+                "right": f"/static/results/predict/{result_filenames['right']}",
+                "front": f"/static/results/predict/{result_filenames['front']}"
+            },
+            "improvements": improvements,
+            "products": products
+        }
+        return jsonify(response)
+    except ValueError as e:
+        return jsonify({"error": str(e)}), 400
+    except Exception as e:
+        logger.error("Prediction error: %s", e)
+        return jsonify({"error": f"Dự đoán thất bại: {str(e)}"}), 500
+
+@app.route("/skin_type", methods=["GET", "POST"])
+def skin_type():
+    if request.method == "GET":
+        return render_template("index.html", show_questions=True, questions=QUESTIONS)
+    elif request.method == "POST":
+        try:
+            answers = request.form.to_dict()
+            skin_type_counts = {
+                "da dầu": 0,
+                "da khô": 0,
+                "da hỗn hợp thiên dầu": 0,
+                "da hỗn hợp thiên khô": 0,
+                "da thường": 0,
+                "da nhạy cảm": 0
+            }
+            for qid in ["q1", "q2", "q3", "q4", "q5"]:
+                if qid not in answers:
+                    return jsonify({"error": f"Thiếu câu trả lời cho câu {qid}"}), 400
+                for question in QUESTIONS:
+                    if question["id"] == qid:
+                        for option in question["options"]:
+                            if option["text"] == answers[qid]:
+                                skin_type_counts[option["skin_type"]] += 1
+                                break
+            max_count = max(skin_type_counts.values())
+            if max_count == 0:
+                return jsonify({"error": "Không xác định được loại da"}), 400
+            skin_type = max(skin_type_counts, key=lambda k: (skin_type_counts[k], ["da nhạy cảm", "da hỗn hợp thiên dầu", "da hỗn hợp thiên khô", "da dầu", "da khô", "da thường"].index(k)))
+            return jsonify({"skin_type": skin_type})
+        except Exception as e:
+            logger.error("Skin type error: %s", e)
+            return jsonify({"error": f"Lỗi xác định loại da: {str(e)}"}), 500
+
+@app.route("/recommend_products/<skin_type>")
+def recommend_products(skin_type):
+    filtered_products = [p for p in PRODUCTS if skin_type in p["skin_types"]]
+    sort_order = request.args.get("sort", "low_to_high")
+    filtered_products.sort(key=lambda x: x["price"], reverse=(sort_order == "high_to_low"))
+    return render_template("index.html", show_products=True, skin_type=skin_type, products=filtered_products)
+
+@app.route("/cleanup", methods=["POST"])
+def cleanup():
+    try:
+        for folder in [app.config["UPLOAD_FOLDER"], app.config["PREDICT_FOLDER"]]:
+            if os.path.exists(folder):
+                for filename in os.listdir(folder):
+                    file_path = os.path.join(folder, filename)
+                    if os.path.isfile(file_path):
+                        os.remove(file_path)
+        return jsonify({"message": "Đã dọn dẹp các file cũ"})
+    except Exception as e:
+        logger.error("Cleanup error: %s", e)
+        return jsonify({"error": f"Dọn dẹp thất bại: {str(e)}"}), 500
+
+@app.route("/hotro")
+def hotro():
+    return render_template("hotro.html")
+
+@app.route("/cosmetic/<skin_type>/<page>")
+def cosmetic_page(skin_type, page):
+    return render_template(f"cosmetic/{skin_type}/{page}")
+
+if __name__ == "__main__":
+    logger.info("Starting Flask server")
+    app.run(debug=True, host="127.0.0.1", port=5000, use_reloader=False)

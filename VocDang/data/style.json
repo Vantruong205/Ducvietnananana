@@ -44,5 +44,20 @@
         "reason": "Thu hút sự chú ý vào phần thân trên đã rộng, làm mất cân đối tổng thể."
       }
     ],
-    
+    "avoid_female": [
+      {
+        "item": "Áo bó sát hoặc áo crop top",
+        "reason": "Làm lộ phần eo đầy đặn, khiến cơ thể trông kém thon gọn."
+      },
+      {
+        "item": "Quần skinny sáng màu",
+        "reason": "Tạo sự tương phản mạnh với thân trên, làm nổi bật sự mất cân đối."
+      },
+      {
+        "item": "Áo có chi tiết rườm rà ở vùng vai hoặc ngực",
+        "reason": "Làm phần thân trên trông rộng hơn, phá vỡ tỷ lệ cơ thể."
+      }
+    ]
+  },
+
     

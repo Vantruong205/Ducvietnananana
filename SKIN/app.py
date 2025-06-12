@@ -197,3 +197,28 @@ def suggest_improvements(issue_counts, issue_confidences):
             "Tránh nắng kỹ, đội mũ/nón và đeo khẩu trang khi ra ngoài."
         ]
     return improvements
+
+def suggest_products(issue_counts):
+    products = {"mụn": [], "lỗ chân lông to": [], "thâm/nám": []}
+    if issue_counts["acne"] > 0:
+        products["mụn"] = [
+            "Sữa rửa mặt Cetaphil Gentle Cleanser (dịu nhẹ cho da mụn)",
+            "Gel trị mụn Differin (adapalene 0.1%)",
+            "Kem trị mụn La Roche-Posay Effaclar Duo+",
+            "Miếng dán mụn Some By Mi Clear Spot Patch"
+        ]
+    if issue_counts["pores"] > 0:
+        products["lỗ chân lông to"] = [
+            "Toner Paula’s Choice Skin Perfecting 2% BHA (giúp làm sạch sâu lỗ chân lông)",
+            "Mặt nạ đất sét Innisfree Super Volcanic Pore Clay Mask",
+            "Toner The Ordinary Glycolic Acid 7% (dùng 1-2 lần/tuần)",
+            "Serum The Ordinary Niacinamide 10% + Zinc 1% (hỗ trợ thu nhỏ lỗ chân lông)"
+        ]
+    if issue_counts["pigment"] > 0:
+        products["thâm/nám"] = [
+            "Serum The Ordinary Vitamin C 23% + HA Spheres 2%",
+            "Kem chống nắng La Roche-Posay Anthelios SPF 50+",
+            "Serum Melano CC (vitamin C Nhật Bản)",
+            "Kem dưỡng sáng da Kiehl’s Clearly Corrective Dark Spot Solution"
+        ]
+    return products

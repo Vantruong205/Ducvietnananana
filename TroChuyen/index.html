@@ -264,3 +264,32 @@
     <input type="text" id="userInput" placeholder="Gõ tin nhắn..." onkeypress="if(event.key === 'Enter') sendMessage()">
     <button class="clear-button" id="clearButton" onclick="clearChat()">Xóa Chat</button>
   </div>
+
+  <script>
+    const staticResponses = {
+      happy: [
+        "Nghe vui ghê! Có chuyện gì vui cậu cứ kể tớ nha. Tớ luôn ở đây và sẵn sàng lắng nghe nè 😍",
+        "Vui thế! Còn gì có thể kể thêm mình nghe nha! 💛",
+        "Mỗi ngày có điều vui là tuyệt vời rồi đó! Cậu còn muốn chia sẻ gì với tớ nghe nữa không? ✨",
+        "Haha, bạn đáng yêu quá đi mất! Người đáng yêu này còn gì muốn kể tớ nghe nữa không? 🥳"
+        
+      ],
+      sad: [
+        "Đừng buồn nữa nha, có mình ở đây nè. 🤗",
+        "Có mình ở bên, bạn không cô đơn đâu. 💙",
+        "Nếu khóc thì cứ khóc đi, rồi sẽ ổn thôi. 😭",
+        "Bạn ổn không? Mình nghe nè, kể hết đi. 😔"
+      ],
+      angry: [
+        "Đừng để cơn giận làm bạn mệt mỏi nhé! 😤",
+        "Hít thở sâu nào, rồi kể mình nghe nhé. 😮‍💨",
+        "Ai khiến bạn bực mình vậy? Có mình rồi, không lo! 😡❤️",
+        "Bạn xứng đáng được đối xử tốt hơn. 💪"
+      ],
+      share: [
+        "Nói đi nói đi, mình nghe từng chữ nè! 🐻",
+        "Thích nghe chuyện của bạn lắm đó! 😘",
+        "Mình đang hóng đây nè! 😆",
+        "Chia sẻ ra sẽ thấy dễ chịu hơn đó! 💌"
+      ]
+    };

@@ -26,7 +26,20 @@ document.addEventListener('DOMContentLoaded', function () {
     body.classList.remove('dark-mode');
     if (darkModeToggle) darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
   }
-  
+
+  if (darkModeToggle) {
+    darkModeToggle.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      if (body.classList.contains('dark-mode')) {
+        localStorage.setItem('darkMode', 'enabled');
+        darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+      } else {
+        localStorage.setItem('darkMode', 'disabled');
+        darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+      }
+    });
+  }
+
   window.bodyShapes = {
     apple: {
       title: "Dáng Quả Táo",

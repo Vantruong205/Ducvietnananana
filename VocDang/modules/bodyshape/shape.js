@@ -26,21 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
     body.classList.remove('dark-mode');
     if (darkModeToggle) darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
   }
-
-  if (darkModeToggle) {
-    darkModeToggle.addEventListener('click', () => {
-      body.classList.toggle('dark-mode');
-      if (body.classList.contains('dark-mode')) {
-        localStorage.setItem('darkMode', 'enabled');
-        darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-      } else {
-        localStorage.setItem('darkMode', 'disabled');
-        darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-      }
-    });
-  }
-
-
+  
   window.bodyShapes = {
     apple: {
       title: "Dáng Quả Táo",
@@ -464,7 +450,7 @@ function displayResult(shapeData) {
     rectangle: 'img_body/hcn.png',
     'inverted-triangle': 'img_body/tgn.png',
   };
-  
+
   const resultImage = document.getElementById('result-image');
   if (resultImage) {
     const imgKey = shapeData.shape || title?.toLowerCase().replace('dáng ', '').replace(/\s+/g, '-') || '';

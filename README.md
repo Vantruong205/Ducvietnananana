@@ -7,7 +7,7 @@
 
 Một ứng dụng web hiện đại giúp bạn chăm sóc **làn da**, **vóc dáng**, và **tinh thần** với giao diện thân thiện, trải nghiệm cá nhân hóa, và công nghệ AI tiên tiến. Đây là giải pháp **all-in-one** để nâng tầm vẻ đẹp và sức khỏe của bạn! Đây là dự án học thuật của môn Kỹ thuật phần mềm, do Nguyễn Thị Quỳnh Anh và Vương Đức Việt thực hiện dưới sự hướng dẫn của giảng viên Trịnh Thanh Bình .
 ### 🎥 Demo sản phẩm
-- 📺 **Video Demo**: [Xem trên YouTube]
+- 📺 **Video Demo**: [Xem trên YouTube] https://youtu.be/3E_UCxEmZo0
 - 🔗 **GitHub Repository**:https://github.com/Vantruong205/Ducvietnananana
 
 ---

@@ -59,5 +59,65 @@
       }
     ]
   },
+  "pear": {
+    "title": "Dáng Quả Lê",
+    "description": "Vóc dáng quả lê có phần hông và đùi rộng hơn vai và ngực, tạo cảm giác phần dưới cơ thể nặng hơn. Phần thân trên thường thon gọn, vai nhỏ, và vòng eo thường rõ ràng. Dáng này thường thấy ở nữ nhiều hơn, nhưng nam giới cũng có thể có đặc điểm này.",
+    "recommendations_male": [
+      {
+        "item": "Áo sơ mi hoặc áo thun có chi tiết ở vai (cầu vai, họa tiết)",
+        "reason": "Tạo cảm giác vai rộng hơn, cân bằng với phần hông rộng."
+      },
+      {
+        "item": "Quần jeans tối màu, ống suông hoặc hơi loe",
+        "reason": "Tối màu giúp thu gọn phần hông, trong khi ống suông/loe cân bằng tỷ lệ cơ thể."
+      },
+      {
+        "item": "Áo khoác dáng ngắn, vừa vặn",
+        "reason": "Nhấn mạnh phần thân trên, thu hút sự chú ý khỏi phần hông rộng."
+      }
+    ],
+    "recommendations_female": [
+      {
+        "item": "Áo có vai phồng hoặc chi tiết nổi bật (bèo nhún, họa tiết)",
+        "reason": "Thu hút sự chú ý lên thân trên, làm vai trông rộng hơn để cân bằng với hông."
+      },
+      {
+        "item": "Váy chữ A hoặc váy xòe",
+        "reason": "Che phần hông rộng, tạo đường cong mềm mại và cân đối hơn."
+      },
+      {
+        "item": "Quần tối màu, ống suông hoặc ống loe",
+        "reason": "Giảm sự chú ý vào phần hông, đồng thời tạo tỷ lệ hài hòa với thân trên."
+      }
+    ],
+    "avoid_male": [
+      {
+        "item": "Quần ống bó hoặc sáng màu",
+        "reason": "Làm nổi bật phần hông rộng, khiến cơ thể trông mất cân đối."
+      },
+      {
+        "item": "Áo quá dài che mất vòng eo",
+        "reason": "Che đi điểm mạnh là vòng eo thon, làm cơ thể trông thẳng hơn."
+      },
+      {
+        "item": "Áo sơ mi quá ôm ở phần thân dưới",
+        "reason": "Nhấn mạnh phần hông, làm mất cân đối với thân trên nhỏ hơn."
+      }
+    ],
+    "avoid_female": [
+      {
+        "item": "Quần skinny sáng màu",
+        "reason": "Làm nổi bật phần hông và đùi, khiến phần dưới trông nặng nề hơn."
+      },
+      {
+        "item": "Áo quá dài che mất vòng eo tự nhiên",
+        "reason": "Làm mất điểm nhấn vòng eo, khiến cơ thể trông kém cân đối."
+      },
+      {
+        "item": "Váy bó sát",
+        "reason": "Làm lộ phần hông và đùi rộng, phá vỡ tỷ lệ cơ thể."
+      }
+    ]
+  },
 
     

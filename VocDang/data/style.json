@@ -179,4 +179,63 @@
       }
     ]
   },
-    
+  "rectangle": {
+    "title": "Dáng Chữ Nhật",
+    "description": "Vóc dáng chữ nhật có vai, eo và hông gần bằng nhau, tạo cảm giác cơ thể thẳng và ít đường cong. Dáng này thường mang lại vẻ ngoài khỏe khoắn, phổ biến ở cả nam và nữ, đặc biệt ở những người có thân hình cân đối nhưng thiếu điểm nhấn ở eo.",
+    "recommendations_male": [
+      {
+        "item": "Áo sơ mi có họa tiết hoặc chi tiết ở ngực (túi ngực, họa tiết lớn)",
+        "reason": "Tạo độ rộng cho thân trên, làm cơ thể trông có đường cong hơn."
+      },
+      {
+        "item": "Quần jeans ống loe hoặc quần chinos dáng thoải mái",
+        "reason": "Thêm độ mềm mại và tạo ảo giác đường cong ở phần hông."
+      },
+      {
+        "item": "Áo khoác có thắt lưng hoặc chi tiết ở eo",
+        "reason": "Tạo ảo giác vòng eo, giúp cơ thể trông bớt thẳng và có tỷ lệ hơn."
+      }
+    ],
+    "recommendations_female": [
+      {
+        "item": "Áo có chi tiết bèo nhún hoặc peplum",
+        "reason": "Tạo ảo giác vòng eo thon gọn, thêm đường cong cho cơ thể."
+      },
+      {
+        "item": "Váy xòe hoặc váy có thắt lưng",
+        "reason": "Tạo điểm nhấn ở eo, làm cơ thể trông mềm mại và có đường cong hơn."
+      },
+      {
+        "item": "Quần ống loe hoặc quần palazzo",
+        "reason": "Thêm độ mềm mại ở phần dưới, tạo tỷ lệ hài hòa hơn cho cơ thể."
+      }
+    ],
+    "avoid_male": [
+      {
+        "item": "Áo sơ mi hoặc áo thun quá bó",
+        "reason": "Làm lộ thân hình thẳng, khiến cơ thể trông thiếu đường cong."
+      },
+      {
+        "item": "Quần ống suông không có điểm nhấn",
+        "reason": "Không tạo được tỷ lệ, làm cơ thể trông thẳng hơn."
+      },
+      {
+        "item": "Áo khoác dáng dài, thẳng",
+        "reason": "Củng cố cảm giác thân hình thẳng, không tạo được điểm nhấn."
+      }
+    ],
+    "avoid_female": [
+      {
+        "item": "Trang phục quá bó sát",
+        "reason": "Làm lộ sự thiếu đường cong, khiến cơ thể trông thẳng hơn."
+      },
+      {
+        "item": "Áo dài thẳng không có điểm nhấn ở eo",
+        "reason": "Không tạo được tỷ lệ, làm cơ thể trông thiếu điểm nhấn."
+      },
+      {
+        "item": "Quần ống suông không tạo được tỷ lệ",
+        "reason": "Làm cơ thể trông thẳng và kém mềm mại."
+      }
+    ]
+  },

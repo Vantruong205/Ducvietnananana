@@ -1,0 +1,30 @@
+:root {
+  --primary-color: #4a6cf7;
+  --primary-light: #eef2ff;
+  --secondary-color: #6b46ff;
+  --accent-color: #ffb347;
+  --success-color: #4cd964;
+  --danger-color: #ff6b6b;
+  --dark-color: #23272f;
+  --light-color: #f9fbfd;
+  --gray-light: #f4f8fb;
+  --text-color: #23272f;
+  --text-light: #fff;
+  --shadow: 0 4px 24px rgba(74, 108, 247, 0.08);
+  --transition: all 0.3s cubic-bezier(.4,0,.2,1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  transition: var(--transition);
+}
+
+body {
+  background-color: var(--light-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}

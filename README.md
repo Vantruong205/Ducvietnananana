@@ -122,7 +122,7 @@ python app.py
 ---
 ### 📂 Cấu trúc thư mục 
 ```text
-KTPM_NHOM/
+KTPM_NHOM15/
 ├── index.html               # Trang tổng quan
 ├── SKIN/                    # Module Mỹ phẩm
 │   ├── app.py               # Backend Flask

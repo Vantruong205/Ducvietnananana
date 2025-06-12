@@ -15,4 +15,34 @@
         "item": "Áo thun cổ chữ V hoặc áo polo không quá ôm",
         "reason": "Cổ chữ V kéo dài thân trên, làm giảm sự chú ý vào vùng eo và tạo cảm giác thon gọn hơn."
       }
+    ],
+    "recommendations_female": [
+      {
+        "item": "Áo khoác dáng dài hoặc áo blazer cinched waist",
+        "reason": "Dáng dài giúp kéo dài thân hình, trong khi chi tiết cinched waist tạo ảo giác vòng eo thon hơn."
+      },
+      {
+        "item": "Váy chữ A hoặc váy suông",
+        "reason": "Che phần eo đầy đặn, tạo sự cân bằng bằng cách làm rộng nhẹ phần hông."
+      },
+      {
+        "item": "Quần ống rộng hoặc ống suông, cạp cao",
+        "reason": "Cạp cao nhấn vào phần eo, trong khi ống rộng cân bằng tỷ lệ giữa thân trên và thân dưới."
+      }
+    ],
+    "avoid_male": [
+      {
+        "item": "Áo bó sát hoặc áo thun ôm",
+        "reason": "Làm lộ phần eo đầy đặn, khiến thân trên trông nặng nề hơn."
+      },
+      {
+        "item": "Quần skinny sáng màu",
+        "reason": "Làm nổi bật phần dưới nhỏ hơn, tạo sự mất cân đối với thân trên."
+      },
+      {
+        "item": "Áo sơ mi có họa tiết lớn ở vùng ngực hoặc vai",
+        "reason": "Thu hút sự chú ý vào phần thân trên đã rộng, làm mất cân đối tổng thể."
+      }
+    ],
+    
     

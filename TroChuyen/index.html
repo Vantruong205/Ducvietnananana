@@ -293,3 +293,36 @@
         "Chia sẻ ra sẽ thấy dễ chịu hơn đó! 💌"
       ]
     };
+
+    let selectedEmotion = null;
+
+    function selectEmotion(emotion) {
+      selectedEmotion = emotion;
+      const chatBox = document.getElementById('chatBox');
+      const chatHeader = document.getElementById('chatHeader');
+      const chatContent = document.getElementById('chatContent');
+      const clearButton = document.getElementById('clearButton');
+
+      // Xóa lớp cảm xúc cũ
+      chatBox.classList.remove('happy', 'sad', 'angry', 'share');
+      chatContent.classList.remove('happy', 'sad', 'angry', 'share');
+      clearButton.classList.remove('happy', 'sad', 'angry', 'share');
+      document.body.classList.remove('bg-happy', 'bg-sad', 'bg-angry', 'bg-share'); 
+
+      // Thêm lớp cảm xúc mới
+      chatBox.classList.add(emotion);
+      chatContent.classList.add(emotion);
+      clearButton.classList.add(emotion);
+      document.body.classList.add('bg-' + emotion); 
+
+      chatBox.classList.add('active');
+      const headerText = {
+        happy: "Cảm xúc: Vui vẻ 😊",
+        sad: "Cảm xúc: Buồn 😢",
+        angry: "Cảm xúc: Tức giận 😠",
+        share: "Cảm xúc: Chia sẻ 🗣️"
+      };
+      chatHeader.textContent = headerText[emotion];
+      chatContent.innerHTML = `<p class="bot-message ${emotion}">${getWelcomeMessage(emotion)}</p>`;
+      document.getElementById('userInput').focus();
+    }

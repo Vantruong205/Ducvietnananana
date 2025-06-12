@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Khảo sát chẩn đoán loại da để tìm sản phẩm chăm sóc da phù hợp với bạn.">
+  <meta name="keywords" content="chẩn đoán da, loại da, da dầu, da khô, da nhạy cảm, chăm sóc da">
+  <title>Chẩn đoán loại da</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/cosmetic-dathuong/css/style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .skin-image {
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+    .skin-image:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+    .skin-image.selected {
+      border-color: #38b2ac;
+      box-shadow: 0 0 0 3px rgba(56, 178, 172, 0.5);
+    }
+    .progress-bar {
+      height: 6px;
+      background-color: #e2e8f0;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background-color: #38b2ac;
+      transition: width 0.5s ease;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 font-sans">
+  <div class="container mx-auto p-4 max-w-4xl">
+    <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+      <!-- Header với progress bar -->
+      <div class="bg-teal-600 p-4 text-white">
+        <h1 class="text-2xl font-bold text-center">🧴 Chẩn đoán loại da của bạn</h1>
+        <div class="mt-4">
+          <div class="flex justify-between mb-1">
+            <span class="text-sm">Tiến trình</span>
+            <span class="text-sm" id="progress-text">0/5</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="p-6">
+        <div id="error" class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-4 hidden" role="alert"></div>
+        
+        <!-- Form khảo sát -->
+        <form id="skinForm" name="skinForm">
+          <!-- Câu hỏi 1 -->
+          <div class="question mb-8" data-question="1">
+            <p class="font-semibold text-lg mb-4 text-gray-800" id="q1-label">
+              <span class="bg-teal-100 text-teal-800 rounded-full w-8 h-8 inline-flex items-center justify-center mr-2">1</span>
+              Sau khi rửa mặt 30 phút, da bạn cảm thấy thế nào?
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-teal-50 transition-colors">
+                <input type="radio" name="q1" value="dry" class="mr-3 h-5 w-5 text-teal-600" required aria-describedby="q1-label">
+                <div>
+                  <p class="font-medium">Khô, căng rát</p>
+                  <img src="/static/img_hotro/dakho-1.webp" alt="Da khô" class="skin-image mt-2 rounded-md w-full h-32 object-cover">
+                </div>
+              </label>
+              
+              <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-teal-50 transition-colors">
+                <input type="radio" name="q1" value="oily" class="mr-3 h-5 w-5 text-teal-600">
+                <div>
+                  <p class="font-medium">Nhờn bóng ở chữ T</p>
+                  <img src="/static/img_hotro/dadau-1.jpg" alt="Da dầu" class="skin-image mt-2 rounded-md w-full h-32 object-cover">
+                </div>
+              </label>
+              
+              <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-teal-50 transition-colors">
+                <input type="radio" name="q1" value="combo_dry" class="mr-3 h-5 w-5 text-teal-600">
+                <div>
+                  <p class="font-medium">Chữ T bóng nhẹ, má khô</p>
+                  <img src="/static/img_hotro/dahonhopthienkho-1.jpg" alt="Da hỗn hợp thiên khô" class="skin-image mt-2 rounded-md w-full h-32 object-cover">
+                </div>
+              </label>
+              
+              <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-teal-50 transition-colors">
+                <input type="radio" name="q1" value="combo_oily" class="mr-3 h-5 w-5 text-teal-600">
+                <div>
+                  <p class="font-medium">Chữ T bóng nhiều, má bình thường</p>
+                  <img src="/static/img_hotro/dahonhopthiendau-1.jpg" alt="Da hỗn hợp thiên dầu" class="skin-image mt-2 rounded-md w-full h-32 object-cover">
+                </div>
+              </label>
+              
+              <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-teal-50 transition-colors">
+                <input type="radio" name="q1" value="normal" class="mr-3 h-5 w-5 text-teal-600">
+                <div>
+                  <p class="font-medium">Không nhờn cũng không khô</p>
+                  <img src="/static/img_hotro/dathuong-1.jpg" alt="Da thường" class="skin-image mt-2 rounded-md w-full h-32 object-cover">
+                </div>
+              </label>
+              
+              <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-teal-50 transition-colors">
+                <input type="radio" name="q1" value="sensitive" class="mr-3 h-5 w-5 text-teal-600">
+                <div>
+                  <p class="font-medium">Bị nóng rát, châm chích nhẹ</p>
+                  <img src="/static/img_hotro/danhaycam-1.webp" alt="Da nhạy cảm" class="skin-image mt-2 rounded-md w-full h-32 object-cover">
+                </div>
+              </label>
+            </div>
+          </div>
+          
+          <!-- Câu hỏi 2 -->
+          <div class="question mb-8 hidden" data-question="2">
+            <p class="font-semibold text-lg mb-4 text-gray-800" id="q2-label">
+              <span class="bg-teal-100 text-teal-800 rounded-full w-8 h-8 inline-flex items-center justify-center mr-2">2</span>
+              Lỗ chân lông của bạn như thế nào?
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-teal-50 transition-colors">
+                <input type="radio" name="q2" value="dry" class="mr-3 h-5 w-5 text-teal-600" required aria-describedby="q2-label">
+                <div>
+                  <p class="font-medium">Nhỏ, khó thấy</p>
+                  <img src="/static/img_hotro/dakho-2.webp" alt="Lỗ chân lông nhỏ" class="skin-image mt-2 rounded-md w-full h-32 object-cover">
+                </div>
+              </label>
+              
+              <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-teal-50 transition-colors">
+                <input type="radio" name="q2" value="oily" class="mr-3 h-5 w-5 text-teal-600">
+                <div>
+                  <p class="font-medium">To rõ ở các vùng trên mặt</p>
+                  <img src="/static/img_hotro/dadau-2.jpg" alt="Lỗ chân lông to" class="skin-image mt-2 rounded-md w-full h-32 object-cover">
+                </div>
+              </label>
+              
+              <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-teal-50 transition-colors">
+                <input type="radio" name="q2" value="combo_oily" class="mr-3 h-5 w-5 text-teal-600">
+                <div>
+                  <p class="font-medium">To ở chữ T, nhỏ ở má</p>
+                  <img src="/static/img_hotro/dahonhopthiendau-2.png" alt="Lỗ chân lông hỗn hợp" class="skin-image mt-2 rounded-md w-full h-32 object-cover">
+                </div>
+              </label>
+              
+              <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-teal-50 transition-colors">
+                <input type="radio" name="q2" value="combo_dry" class="mr-3 h-5 w-5 text-teal-600">
+                <div>
+                  <p class="font-medium">Nhỏ ở má, chữ T hơi to</p>
+                  <img src="/static/img_hotro/dahonhopthiendau-2.png" alt="Lỗ chân lông hỗn hợp" class="skin-image mt-2 rounded-md w-full h-32 object-cover">
+                </div>
+              </label>
+              
+              <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-teal-50 transition-colors">
+                <input type="radio" name="q2" value="normal" class="mr-3 h-5 w-5 text-teal-600">
+                <div>
+                  <p class="font-medium">Đều, không nổi bật</p>
+                  <img src="/static/img_hotro/dathuong-2.jpg" alt="Lỗ chân lông bình thường" class="skin-image mt-2 rounded-md w-full h-32 object-cover">
+                </div>
+              </label>
+              
+              <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-teal-50 transition-colors">
+                <input type="radio" name="q2" value="sensitive" class="mr-3 h-5 w-5 text-teal-600">
+                <div>
+                  <p class="font-medium">Dễ nổi đỏ, kích ứng</p>
+                  <img src="/static/img_hotro/danhaycam-2.webp" alt="Da nhạy cảm" class="skin-image mt-2 rounded-md w-full h-32 object-cover">
+                </div>
+              </label>
+            </div>
+          </div>
+                
+          <!-- Câu hỏi 3 -->
+          <div class="question mb-8 hidden" data-question="3">
+            <p class="font-semibold text-lg mb-4 text-gray-800" id="q3-label">
+              <span class="bg-teal-100 text-teal-800 rounded-full w-8 h-8 inline-flex items-center justify-center mr-2">3</span>
+              Bạn thường gặp vấn đề gì?
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-teal-50 transition-colors">
+                <input type="radio" name="q3" value="dry" class="mr-3 h-5 w-5 text-teal-600" required aria-describedby="q3-label">
+                <div>
+                  <p class="font-medium">Bong tróc, nứt nẻ</p>
+                  <img src="/static/img_hotro/dakho-3.jpg" alt="Da bong tróc" class="skin-image mt-2 rounded-md w-full h-32 object-cover">
+                </div>
+              </label>
+              
+              <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-teal-50 transition-colors">
+                <input type="radio" name="q3" value="oily" class="mr-3 h-5 w-5 text-teal-600">
+                <div>
+                  <p class="font-medium">Nhờn, mụn đầu đen, mụn viêm</p>
+                  <img src="/static/img_hotro/dadau-3.webp" alt="Da mụn" class="skin-image mt-2 rounded-md w-full h-32 object-cover">
+                </div>
+              </label>
+              
+              <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-teal-50 transition-colors">
+                <input type="radio" name="q3" value="combo_oily" class="mr-3 h-5 w-5 text-teal-600">
+                <div>
+                  <p class="font-medium">Mụn đầu đen vùng chữ T, má khô</p>
+                  <img src="/static/img_hotro/dahonhopthiendau-3.jpg" alt="Da hỗn hợp mụn" class="skin-image mt-2 rounded-md w-full h-32 object-cover">
+                </div>
+              </label>
+              
+              <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-teal-50 transition-colors">
+                <input type="radio" name="q3" value="combo_dry" class="mr-3 h-5 w-5 text-teal-600">
+                <div>
+                  <p class="font-medium">Mụn đầu trắng và má khô nhẹ</p>
+                  <img src="/static/img_hotro/dahonhopthienkho-3.webp" alt="Da hỗn hợp khô" class="skin-image mt-2 rounded-md w-full h-32 object-cover">
+                </div>
+              </label>
+              
+              <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-teal-50 transition-colors">
+                <input type="radio" name="q3" value="normal" class="mr-3 h-5 w-5 text-teal-600">
+                <div>
+                  <p class="font-medium">Ít vấn đề, đôi khi nổi mụn</p>
+                  <img src="/static/img_hotro/dathuong-3.jpg" alt="Da ít vấn đề" class="skin-image mt-2 rounded-md w-full h-32 object-cover">
+                </div>
+              </label>
+              
+              <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-teal-50 transition-colors">
+                <input type="radio" name="q3" value="sensitive" class="mr-3 h-5 w-5 text-teal-600">
+                <div>
+                  <p class="font-medium">Ngứa, đỏ, châm chích</p>
+                  <img src="/static/img_hotro/danhaycam-3.jpg" alt="Da nhạy cảm" class="skin-image mt-2 rounded-md w-full h-32 object-cover">
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Câu hỏi 4 -->
+          <div class="question mb-8 hidden" data-question="4">
+            <p class="font-semibold text-lg mb-4 text-gray-800" id="q4-label">
+              <span class="bg-teal-100 text-teal-800 rounded-full w-8 h-8 inline-flex items-center justify-center mr-2">4</span>
+              Bạn cảm thấy da thay đổi thế nào trong ngày?
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-teal-50 transition-colors">
+                <input type="radio" name="q4" value="dry" class="mr-3 h-5 w-5 text-teal-600" required aria-describedby="q4-label">
+                <div>
+                  <p class="font-medium">Càng về chiều càng khô, khó chịu</p>
+                  <img src="/static/img_hotro/dakho-4.webp" alt="Da khô về chiều" class="skin-image mt-2 rounded-md w-full h-32 object-cover">
+                </div>
+              </label>
+              
+              <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-teal-50 transition-colors">
+                <input type="radio" name="q4" value="oily" class="mr-3 h-5 w-5 text-teal-600">
+                <div>
+                  <p class="font-medium">Dầu nhiều rõ rệt sau vài tiếng</p>
+                  <img src="/static/img_hotro/dadau-4.png" alt="Da đổ dầu" class="skin-image mt-2 rounded-md w-full h-32 object-cover">
+                </div>
+              </label>
+              
+              <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-teal-50 transition-colors">
+                <input type="radio" name="q4" value="combo_oily" class="mr-3 h-5 w-5 text-teal-600">
+                <div>
+                  <p class="font-medium">Ban đầu khô, nhưng vùng chữ T bắt đầu đổ dầu sau vài tiếng</p>
+                  <img src="/static/img_hotro/dahonhopthiendau-41.jpg" alt="Da hỗn hợp đổ dầu" class="skin-image mt-2 rounded-md w-full h-32 object-cover">
+                </div>
+              </label>
+              
+              <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-teal-50 transition-colors">
+                <input type="radio" name="q4" value="combo_dry" class="mr-3 h-5 w-5 text-teal-600">
+                <div>
+                  <p class="font-medium">Khô vùng má, nhưng chữ T vẫn ra ít dầu</p>
+                  <img src="/static/img_hotro/dahonhopthienkho-4.jpg" alt="Da hỗn hợp khô" class="skin-image mt-2 rounded-md w-full h-32 object-cover">
+                </div>
+              </label>
+              
+              <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-teal-50 transition-colors">
+                <input type="radio" name="q4" value="normal" class="mr-3 h-5 w-5 text-teal-600">
+                <div>
+                  <p class="font-medium">Gần như không thay đổi, ổn định cả ngày</p>
+                  <img src="/static/img_hotro/dathuong-5.png" alt="Da ổn định" class="skin-image mt-2 rounded-md w-full h-32 object-cover">
+                </div>
+              </label>
+              
+              <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-teal-50 transition-colors">
+                <input type="radio" name="q4" value="sensitive" class="mr-3 h-5 w-5 text-teal-600">
+                <div>
+                  <p class="font-medium">Thay đổi liên tục, dễ bị kích ứng khi trời nóng, lạnh hoặc khi makeup</p>
+                  <img src="/static/img_hotro/danhaycam-4.webp" alt="Da nhạy cảm" class="skin-image mt-2 rounded-md w-full h-32 object-cover">
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Câu hỏi 5 -->
+          <div class="question mb-8 hidden" data-question="5">
+            <p class="font-semibold text-lg mb-4 text-gray-800" id="q5-label">
+              <span class="bg-teal-100 text-teal-800 rounded-full w-8 h-8 inline-flex items-center justify-center mr-2">5</span>
+              Khi sử dụng mỹ phẩm lạ, bạn thường gặp tình trạng nào?
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-teal-50 transition-colors">
+                <input type="radio" name="q5" value="normal" class="mr-3 h-5 w-5 text-teal-600" required aria-describedby="q5-label">
+                <div>
+                  <p class="font-medium">Không có vấn đề gì</p>
+                  <img src="/static/img_hotro/dathuong-51.jpg" alt="Da bình thường" class="skin-image mt-2 rounded-md w-full h-32 object-cover">
+                </div>
+              </label>
+              
+              <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-teal-50 transition-colors">
+                <input type="radio" name="q5" value="oily" class="mr-3 h-5 w-5 text-teal-600">
+                <div>
+                  <p class="font-medium">Dầu nhiều hơn, dễ nổi mụn</p>
+                  <img src="/static/img_hotro/dadau-4.jpg" alt="Da dầu" class="skin-image mt-2 rounded-md w-full h-32 object-cover">
+                </div>
+              </label>
+              
+              <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-teal-50 transition-colors">
+                <input type="radio" name="q5" value="dry" class="mr-3 h-5 w-5 text-teal-600">
+                <div>
+                  <p class="font-medium">Châm chích nhẹ vùng da khô</p>
+                  <img src="/static/img_hotro/dahonhopthienkho-5.jpg" alt="Da khô" class="skin-image mt-2 rounded-md w-full h-32 object-cover">
+                </div>
+              </label>
+              
+              <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-teal-50 transition-colors">
+                <input type="radio" name="q5" value="combo_oily" class="mr-3 h-5 w-5 text-teal-600">
+                <div>
+                  <p class="font-medium">Mụn đầu đen vùng mũi, khô má</p>
+                  <img src="/static/img_hotro/dahonhopthiendau-41.jpg" alt="Da hỗn hợp dầu" class="skin-image mt-2 rounded-md w-full h-32 object-cover">
+                </div>
+              </label>
+              
+              <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-teal-50 transition-colors">
+                <input type="radio" name="q5" value="combo_dry" class="mr-3 h-5 w-5 text-teal-600">
+                <div>
+                  <p class="font-medium">Căng nhẹ nhưng không kích ứng</p>
+                  <img src="/static/img_hotro/dakho-4.jpg" alt="Da hỗn hợp khô" class="skin-image mt-2 rounded-md w-full h-32 object-cover">
+                </div>
+              </label>
+              
+              <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-teal-50 transition-colors">
+                <input type="radio" name="q5" value="sensitive" class="mr-3 h-5 w-5 text-teal-600">
+                <div>
+                  <p class="font-medium">Rát, đỏ, ngứa hoặc nổi mụn li ti</p>
+                  <img src="/static/img_hotro/danhaycam-5.webp" alt="Da nhạy cảm" class="skin-image mt-2 rounded-md w-full h-32 object-cover">
+                </div>
+              </label>
+            </div>
+          </div>
+          <div class="flex justify-between mt-8">
+            <button type="button" onclick="prevQuestion()" class="bg-gray-200 text-gray-700 px-6 py-2 rounded-lg hover:bg-gray-300 transition-colors hidden" id="prevBtn">
+              <i class="fas fa-arrow-left mr-2"></i> Quay lại
+            </button>
+            <button type="button" onclick="nextQuestion()" class="bg-teal-600 text-white px-6 py-2 rounded-lg hover:bg-teal-700 transition-colors ml-auto" id="nextBtn">
+              Tiếp theo <i class="fas fa-arrow-right ml-2"></i>
+            </button>
+            <button type="button" onclick="analyze()" class="bg-teal-600 text-white px-6 py-2 rounded-lg hover:bg-teal-700 transition-colors hidden" id="submitBtn">
+              <span id="buttonText">Xác định loại da</span>
+              <svg id="loadingSpinner" class="animate-spin h-5 w-5 ml-2 hidden inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal kết quả -->
+  <div id="resultModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center hidden z-50">
+    <div class="bg-white p-6 rounded-xl shadow-xl max-w-md w-full mx-4">
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="text-xl font-bold text-gray-800">Kết quả chẩn đoán</h3>
+        <button onclick="closeModal()" class="text-gray-500 hover:text-gray-700">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      
+      <div id="modalResult" class="text-lg mb-6"></div>
+      
+      <div class="flex flex-col sm:flex-row justify-between gap-3">
+        <button onclick="closeModal()" class="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-300 transition-colors flex-1">
+          Đóng
+        </button>
+        <button onclick="redirectToSkinType()" id="redirectButton" class="bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 transition-colors flex-1 flex items-center justify-center">
+          Xem sản phẩm phù hợp <i class="fas fa-arrow-right ml-2"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Biến toàn cục
+    let selectedSkinType = '';
+    let currentQuestion = 1;
+    const totalQuestions = 5;
+
+    // Hàm cập nhật tiến trình
+    function updateProgress() {
+      const answeredQuestions = document.querySelectorAll(`input[type="radio"]:checked`).length;
+      const progressPercent = (answeredQuestions / totalQuestions) * 100;
+      
+      document.getElementById('progress-fill').style.width = `${progressPercent}%`;
+      document.getElementById('progress-text').textContent = `${answeredQuestions}/${totalQuestions}`;
+    }
+
+    // Hàm hiển thị câu hỏi
+    function showQuestion(questionNum) {
+      document.querySelectorAll('.question').forEach(q => {
+        q.classList.add('hidden');
+      });
+      
+      document.querySelector(`.question[data-question="${questionNum}"]`).classList.remove('hidden');
+      
+      // Cập nhật nút điều hướng
+      document.getElementById('prevBtn').classList.toggle('hidden', questionNum === 1);
+      document.getElementById('nextBtn').classList.toggle('hidden', questionNum === totalQuestions);
+      document.getElementById('submitBtn').classList.toggle('hidden', questionNum !== totalQuestions);
+      
+      currentQuestion = questionNum;
+      updateProgress();
+    }
+
+    // Chuyển đến câu hỏi tiếp theo
+    function nextQuestion() {
+      const currentQuestionElement = document.querySelector(`.question[data-question="${currentQuestion}"]`);
+      const isAnswered = currentQuestionElement.querySelector('input[type="radio"]:checked');
+      
+      if (!isAnswered) {
+        document.getElementById('error').textContent = 'Vui lòng chọn một đáp án để tiếp tục';
+        document.getElementById('error').classList.remove('hidden');
+        return;
+      }
+      
+      document.getElementById('error').classList.add('hidden');
+      showQuestion(currentQuestion + 1);
+    }
+
+    // Quay lại câu hỏi trước
+    function prevQuestion() {
+      showQuestion(currentQuestion - 1);
+    }
+
+    // Phân tích kết quả
+    function analyze() {
+      const form = document.forms['skinForm'];
+      const errorDiv = document.getElementById('error');
+      const buttonText = document.getElementById('buttonText');
+      const spinner = document.getElementById('loadingSpinner');
+      const modal = document.getElementById('resultModal');
+      const modalResult = document.getElementById('modalResult');
+
+      // Kiểm tra xem tất cả câu hỏi đã được trả lời chưa
+      const answeredQuestions = document.querySelectorAll('input[type="radio"]:checked').length;
+      if (answeredQuestions < totalQuestions) {
+        errorDiv.textContent = 'Vui lòng trả lời đầy đủ tất cả các câu hỏi!';
+        errorDiv.classList.remove('hidden');
+        return;
+      }
+
+      // Reset error
+      errorDiv.classList.add('hidden');
+
+      // Hiển thị loading
+      buttonText.innerText = 'Đang xử lý...';
+      spinner.classList.remove('hidden');
+
+      // Thu thập đáp án
+      const scores = { oily: 0, dry: 0, combo_oily: 0, combo_dry: 0, normal: 0, sensitive: 0 };
+      for (let i = 1; i <= totalQuestions; i++) {
+        const radios = form['q' + i];
+        let selected = '';
+        if (radios) {
+          if (radios.length) {
+            for (let r of radios) if (r.checked) selected = r.value;
+          } else if (radios.checked) {
+            selected = radios.value;
+          }
+        }
+        if (scores.hasOwnProperty(selected)) {
+          scores[selected]++;
+        }
+      }
+
+      // Xác định loại da
+      const [result, maxScore] = Object.entries(scores).reduce(
+        ([type, max], [currType, score]) => (score > max ? [currType, score] : [type, max]),
+        ['normal', 0]
+      );
+
+      selectedSkinType = result;
+
+      const skinNames = {
+        oily: 'Da dầu',
+        dry: 'Da khô',
+        combo_oily: 'Da hỗn hợp thiên dầu',
+        combo_dry: 'Da hỗn hợp thiên khô',
+        normal: 'Da thường',
+        sensitive: 'Da nhạy cảm'
+      };
+
+      const skinDescriptions = {
+        oily: 'Da bạn tiết nhiều dầu, dễ bóng nhờn và có xu hướng nổi mụn. Nên sử dụng sản phẩm kiểm soát dầu nhờn và làm sạch sâu.',
+        dry: 'Da bạn thiếu ẩm, dễ bong tróc và căng rát. Cần dưỡng ẩm sâu và bảo vệ da khỏi tác nhân gây khô.',
+        combo_oily: 'Da bạn hỗn hợp với vùng chữ T nhiều dầu và má bình thường. Cần chăm sóc riêng từng vùng da.',
+        combo_dry: 'Da bạn hỗn hợp với má khô và vùng chữ T hơi nhờn. Cần cân bằng giữa dưỡng ẩm và kiểm soát dầu.',
+        normal: 'Da bạn cân bằng, không quá khô cũng không quá nhờn. Duy trì chế độ chăm sóc da phù hợp để giữ vẻ đẹp tự nhiên.',
+        sensitive: 'Da bạn dễ kích ứng, đỏ và ngứa. Cần sản phẩm dịu nhẹ, không chứa thành phần gây kích ứng.'
+      };
+
+      // Hiển thị kết quả trong modal
+      setTimeout(() => {
+        modalResult.innerHTML = `
+          <div class="flex items-center mb-4">
+            <div class="bg-teal-100 text-teal-800 rounded-full w-12 h-12 flex items-center justify-center mr-4">
+              <i class="fas fa-spa text-xl"></i>
+            </div>
+            <div>
+              <h4 class="font-bold text-xl">${skinNames[result]}</h4>
+              <p class="text-gray-600">${skinDescriptions[result]}</p>
+            </div>
+          </div>
+          <div class="bg-gray-50 p-4 rounded-lg">
+            <p class="text-sm text-gray-700"><i class="fas fa-lightbulb text-teal-500 mr-2"></i> <strong>Lời khuyên:</strong> Chúng tôi sẽ gợi ý các sản phẩm phù hợp với loại da của bạn.</p>
+          </div>
+        `;
+        modal.classList.remove('hidden');
+        buttonText.innerText = 'Xác định loại da';
+        spinner.classList.add('hidden');
+      }, 800); // Giả lập thời gian xử lý
+    }
+
+    function redirectToSkinType() {
+      const skinUrls = {
+        oily: './cosmetic/dadau/dadau.html',
+        dry: './cosmetic/dakho/dakho.html',
+        combo_oily: './cosmetic/dahonhop/dahonhop.html',
+        combo_dry: './cosmetic/dahonhop/dahonhop.html',
+        normal: './cosmetic/dathuong/dathuong.html',
+        sensitive: './cosmetic/danhaycam/danhaycam.html'
+      };
+      window.location.href = skinUrls[selectedSkinType] || './cosmetic/dathuong/dathuong.html';
+    }
+
+    function closeModal() {
+      document.getElementById('resultModal').classList.add('hidden');
+    }
+
+    // Khởi tạo - hiển thị câu hỏi đầu tiên
+    document.addEventListener('DOMContentLoaded', () => {
+      showQuestion(1);
+      
+      // Thêm hiệu ứng khi chọn đáp án
+      document.querySelectorAll('input[type="radio"]').forEach(radio => {
+        radio.addEventListener('change', function() {
+          // Xóa class selected khỏi tất cả các hình ảnh trong câu hỏi hiện tại
+          const currentQuestionElement = document.querySelector(`.question[data-question="${currentQuestion}"]`);
+          currentQuestionElement.querySelectorAll('.skin-image').forEach(img => {
+            img.classList.remove('selected');
+          });
+          
+          // Thêm class selected vào hình ảnh được chọn
+          if (this.checked) {
+            const parentLabel = this.closest('label');
+            const img = parentLabel.querySelector('.skin-image');
+            if (img) img.classList.add('selected');
+          }
+          
+          updateProgress();
+        });
+      });
+    });
+  </script>
+</body>
+</html>

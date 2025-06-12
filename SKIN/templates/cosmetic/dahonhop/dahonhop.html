@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Chủ - Mỹ Phẩm Da Hỗn Hợp</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='cosmetic/css/styles.css') }}">
+</head>
+<body class="bg-gray-100">
+    <!-- Header -->
+    <header class="bg-white shadow">
+        <nav class="container mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="w-full flex justify-between items-center font-semibold text-gray-800 nav-links bg-blue-50 rounded-xl px-6 py-3 shadow-md mt-6 mb-6">
+                <a href="dahonhop.html" class="nav-item active">Trang Chủ</a>
+                <a href="taytrang.html" class="nav-item">Tẩy Trang</a>
+                <a href="suaruamat.html" class="nav-item">Sữa Rửa Mặt</a>
+                <a href="serum.html" class="nav-item">Serum</a>
+                <a href="kemchongnang.html" class="nav-item">Kem Chống Nắng</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main -->
+    <main class="container mx-auto px-6 py-8">
+        <h2 class="text-3xl font-bold text-blue-700 mb-8 text-center">Mỹ Phẩm Dành Cho Da Hỗn Hợp</h2>
+        <div class="grid gap-12 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-8">
+            <div class="product-card">
+                <img src="{{ url_for('static', filename='img_dadau/kemchongnang/kcnnb.jpg') }}" alt="Tẩy Trang Da Dầu" class="product-img">
+                <h3>Simple Micellar Cleansing Water</h3>
+                <div><strong>Thành phần chính</strong>: Micellar Water, Niacinamide, Panthenol.</div>
+                <div><strong>Công dụng</strong>: Làm sạch dịu nhẹ, loại bỏ dầu thừa vùng chữ T, không gây khô vùng má.</div>
+                <div><strong>Kết cấu</strong>: Nước lỏng, không nhờn.</div>
+                <div><strong>Đặc điểm nổi bật</strong>: Không cồn, không hương liệu, phù hợp da hỗn hợp.</div>
+                <div class="text-blue-500 font-semibold">Phù hợp: Da hỗn hợp</div>
+                <div class="text-pink-600 font-bold mt-2">Giá tham khảo: ~120.000 VND/200ml</div>
+            </div>
+            <div class="product-card">
+                 <img src="{{ url_for('static', filename='img_dadau/taytrang/ttnb.webp') }}" alt="Tẩy Trang Da Dầu" class="product-img">
+                <h3>La Roche-Posay Effaclar Gel</h3>
+                <div><strong>Thành phần chính</strong>: Zinc PCA, nước khoáng La Roche-Posay.</div>
+                <div><strong>Công dụng</strong>: Làm sạch sâu vùng dầu, dịu nhẹ vùng khô, cân bằng da.</div>
+                <div><strong>Kết cấu</strong>: Dạng gel, tạo bọt nhẹ.</div>
+                <div><strong>Đặc điểm nổi bật</strong>: Không cồn, không paraben, phù hợp da hỗn hợp thiên dầu.</div>
+                <div class="text-blue-500 font-semibold">Phù hợp: Da hỗn hợp</div>
+                <div class="text-pink-600 font-bold mt-2">Giá tham khảo: ~350.000 VND/200ml</div>
+            </div>
+            <div class="product-card">
+                <img src="{{ url_for('static', filename='img_dadau/taytrang/ttnbdadau.jpg') }}" alt="Tẩy Trang Da Dầu" class="product-img">
+                <div><strong>Thành phần chính</strong>: Vitamin B5, Hyaluronic Acid.</div>
+                <div><strong>Công dụng</strong>: Cấp ẩm vùng khô, kiểm soát dầu vùng chữ T, phục hồi da.</div>
+                <div><strong>Kết cấu</strong>: Dạng gel lỏng, thấm nhanh.</div>
+                <div><strong>Đặc điểm nổi bật</strong>: Không cồn, không hương liệu, phù hợp da hỗn hợp.</div>
+                <div class="text-blue-500 font-semibold">Phù hợp: Da hỗn hợp</div>
+                <div class="text-pink-600 font-bold mt-2">Giá tham khảo: ~250.000 VND/30ml</div>
+            </div>
+            <div class="product-card">
+                <img src="{{ url_for('static', filename='img_dadau/taytrang/ttnbdadau.jpg') }}" alt="Tẩy Trang Da Dầu" class="product-img">
+                <h3>Anessa Perfect UV Sunscreen Skincare Milk SPF50+</h3>
+                <div><strong>Thành phần chính</strong>: Zinc Oxide, Hyaluronic Acid, chiết xuất hoa anh đào.</div>
+                <div><strong>Công dụng</strong>: Bảo vệ da khỏi tia UV, kiểm soát dầu vùng chữ T, dưỡng ẩm vùng khô.</div>
+                <div><strong>Kết cấu</strong>: Dạng sữa, thấm nhanh, không gây bết dính.</div>
+                <div><strong>Đặc điểm nổi bật</strong>: Không cồn, không hương liệu, phù hợp da hỗn hợp.</div>
+                <div class="text-blue-500 font-semibold">Phù hợp: Da hỗn hợp</div>
+                <div class="text-pink-600 font-bold mt-2">Giá tham khảo: ~600.000 VND/60ml</div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-200 py-6">
+        <div class="container mx-auto px-6 text-center">
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='cosmetic/js/main.js') }}"></script>
+</body>
+</html>

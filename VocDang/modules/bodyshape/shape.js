@@ -456,6 +456,14 @@ function displayResult(shapeData) {
   }
   shapeTitle.textContent = title || 'Không có tiêu đề';
   shapeDescription.textContent = description || 'Không có mô tả';
+
+  const imageMap = {
+    apple: 'img_body/qt.png',
+    pear: 'img_body/ql.png',
+    hourglass: 'img_body/dhc.png',
+    rectangle: 'img_body/hcn.png',
+    'inverted-triangle': 'img_body/tgn.png',
+  };
   
   const resultImage = document.getElementById('result-image');
   if (resultImage) {
